@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project-02</title>
+    <style>
+        .process {
+            width: 400px;
+            height: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .process_on {
+            width: 1%;
+            height: 100%;
+            background-color: aqua;
+            border-radius: 5px;
+        }
+        
+        button {
+            position: relative;
+            top: 10px;
+        }
+        
+        span {
+            display: block;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 45%;
+            text-align: center;
+            line-height: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="process">
+        <div class="process_on"></div>
+        <span>0%</span>
+    </div>
+    <button>开始</button>
+    <button>暂停</button>
+    <button>重新加载</button>
+
+
+
+    <script>
+        var button = document.querySelectorAll('button');
+        var process_on = document.querySelector('.process_on');
+        var span = document.querySelector('span');
+        var timer = 0;
+        var i = 0;
+        // flag 用于判断是否按下开始键
+        var flag = false;
+        // 节流阀？
+        button[0].addEventListener('click', function() {
+            flag = true;
+            timer = setInterval(function() {
+                if (i < 100) {
+                    i++;
+                    process_on.style.width = i + '%';
+                    span.innerText = i + '%';
+                };
+            }, 100);
+        });
+        button[1].addEventListener('click', function() {
+            if (flag == true)
+                clearInterval(timer);
+            flag = false;
+        });
+        button[2].addEventListener('click', function() {
+            i = 0;
+            process_on.style.width = i + '%';
+            span.innerText = i + '%';
+        });
+    </script>
+</body>
+
+</html>
