@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project-03</title>
+    <style>
+        .box {
+            width: 330px;
+            height: 100px;
+            margin: 100px auto;
+            position: relative;
+        }
+        
+        .progress {
+            width: 300px;
+            height: 6px;
+            background-color: #ccc;
+            margin: 10px;
+            position: relative;
+        }
+        
+        .progress_chi {
+            width: 10%;
+            height: 100%;
+            background-color: aqua;
+        }
+        
+        .circle {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #ccc;
+            border-radius: 50%;
+            background-color: #ccc;
+            text-align: center;
+            line-height: 42px;
+        }
+        
+        .col {
+            border-color: aqua;
+        }
+        
+        .o {
+            position: absolute;
+            top: -20px;
+            left: -12px;
+        }
+        
+        .t {
+            position: absolute;
+            top: -20px;
+            left: 95px;
+        }
+        
+        .r {
+            position: absolute;
+            top: -20px;
+            left: 190px;
+        }
+        
+        .f {
+            position: absolute;
+            top: -20px;
+            left: 280px;
+        }
+        
+        button {
+            width: 60px;
+            height: 30px;
+            border-radius: 5px;
+            background-color: aqua;
+            position: absolute;
+            top: 200px;
+            left: 180px;
+        }
+        
+        .prve {
+            position: absolute;
+            top: 200px;
+            left: 100px;
+        }
+        
+        button:disabled {
+            border: 2px solid aqua;
+            background-color: #ccc;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="progress">
+            <div class="progress_chi"></div>
+            <div class="circle o col">1</div>
+            <div class="circle t">2</div>
+            <div class="circle r">3</div>
+            <div class="circle f">4</div>
+        </div>
+        <button class="prve">Prve</button>
+        <button class="next">Next</button>
+    </div>
+
+
+
+
+    <script>
+        // 获取元素
+        var progress = document.querySelector('.progress');
+        var progress_chi = document.querySelector('.progress_chi');
+        var circle = document.querySelectorAll('.circle');
+        var next = document.querySelector('.next');
+        var prve = document.querySelector('.prve');
+        // 定义一个变量用于计数
+        var num = 0;
+        // 现将 prve 按键设置为禁用
+        prve.disabled = true;
+        // next 的click事件
+        next.addEventListener('click', function() {
+            num = num + 1;
+            // console.log(num);
+            circle[num].classList.add('col');
+            progress_chi.style.width = (num * 33) + '%';
+            prve.disabled = false;
+            if (num == 3) {
+                next.disabled = true;
+            };
+        });
+        // prve
+        prve.addEventListener('click', function() {
+            circle[num].classList.remove('col');
+            num = num - 1;
+            // console.log(num);
+            progress_chi.style.width = (num * 33) + '%';
+            if (num == 0) {
+                prve.disabled = true;
+                next.disabled = false;
+            };
+        });
+    </script>
+</body>
+
+</html>
