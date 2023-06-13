@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form wave</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: rgb(79, 156, 243);
+        }
+        
+        .box {
+            width: 380px;
+            height: 430px;
+            border: 1px solid #ccc;
+            background-color: cornflowerblue;
+            padding: 20px 40px;
+            margin: 100px auto;
+            border-radius: 10px;
+        }
+        
+        h1 {
+            width: 100%;
+            height: 42px;
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            margin: 22px 0 30px;
+        }
+        
+        .one,
+        .two {
+            width: 100%;
+            height: 54px;
+            margin: 20px 0 40px;
+            position: relative;
+            border-bottom: 2px solid #fff;
+        }
+        
+        input {
+            width: 100%;
+            height: 100%;
+            display: block;
+            padding: 15px 0;
+            margin: 0 auto;
+            border: 0;
+            outline: none;
+            z-index: 6;
+            background-color: cornflowerblue;
+        }
+        
+        label {
+            text-indent: 0;
+            letter-spacing: 0;
+        }
+        
+        .one label {
+            position: absolute;
+            top: 15px;
+            left: 0;
+        }
+        
+        .two label {
+            position: absolute;
+            top: 15px;
+            left: 0;
+        }
+        
+        label span {
+            display: inline-block;
+            font-size: 18px;
+            min-width: 5px;
+            padding: 0;
+            font-size: 16px;
+            color: #fff;
+        }
+        /* 使用hover也可以实现这一效果 */
+        /* label:hover span {
+            transform: translateY(-20px);
+        } */
+        
+        button {
+            width: 100%;
+            height: 54px;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 5px;
+            background-color: #358aeb;
+        }
+        
+        p {
+            display: block;
+            width: 100%;
+            height: 21px;
+            margin: 30px 0 16px;
+            color: #fff;
+        }
+        
+        i {
+            color: #358aeb
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <form action="#">
+            <h1>Please Login</h1>
+            <div class="one">
+                <input type="text" name="'username" class="input_one">
+                <label class="emails" for="span"> 
+                <span style="transition-delay: 0.5s;">E</span>
+                <span style="transition-delay: 0.4s;">m</span>
+                <span style="transition-delay: 0.3s;">a</span>
+                <span style="transition-delay: 0.2s;">i</span>
+                <span>l</span>
+            </label>
+            </div>
+            <div class="two">
+                <input type="password" name="'password" class="input_two">
+                <label class="passwords">
+                <span style="transition-delay: 0.8s;">P</span>
+                <span style="transition-delay: 0.7s;">a</span>
+                <span style="transition-delay: 0.6s;">s</span>
+                <span style="transition-delay: 0.5s;">s</span>
+                <span style="transition-delay: 0.4s;">w</span>
+                <span style="transition-delay: 0.3s;">o</span>
+                <span style="transition-delay: 0.2s;">r</span>
+                <span>d</span>
+                </label>
+            </div>
+            <button>Login</button>
+            <p>Don't have an account? <i>Register</i></p>
+        </form>
+    </div>
+
+
+    <script>
+        var input_one = document.querySelector('.input_one');
+        var input_two = document.querySelector('.input_two');
+        var emails = document.getElementsByClassName('emails')[0];
+        var span_one = emails.getElementsByTagName('span');
+        var passwords = document.getElementsByClassName('passwords')[0];
+        var span_two = passwords.getElementsByTagName('span');
+        input_one.addEventListener('focus', function() {
+            for (var i = 0; i < span_one.length; i++) {
+                span_one[i].style.transform = 'translateY(-' + 20 + 'px)'
+            }
+        })
+        input_one.addEventListener('blur', function() {
+            for (var i = 0; i < span_one.length; i++) {
+                span_one[i].style.transform = 'translateY(' + 0 + 'px)'
+            }
+        })
+        input_two.addEventListener('focus', function() {
+            for (var i = 0; i < span_two.length; i++) {
+                span_two[i].style.transform = 'translateY(-' + 20 + 'px)'
+            }
+        })
+        input_two.addEventListener('blur', function() {
+            for (var i = 0; i < span_two.length; i++) {
+                span_two[i].style.transform = 'translateY(' + 0 + 'px)'
+            }
+        })
+    </script>
+</body>
+
+</html>
